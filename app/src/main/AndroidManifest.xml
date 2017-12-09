@@ -19,7 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Housekeeping" />
+        <activity android:name=".FeedbackActivity" />
+        <activity android:name=".HotelHousekeepingActivity" />
+        <activity android:name=".InformationActivity" />
+        <activity android:name=".FeedbackMenuActivity" />
+        <activity android:name=".MaintenanceActivity" />
+        <activity android:name=".ReceptionActivity" />
+        <activity android:name=".SecurityActivity" />
+        <activity android:name=".RoomServiceActivity"></activity>
     </application>
 
 </manifest>

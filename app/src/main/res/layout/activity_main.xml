@@ -7,6 +7,14 @@
     android:background="#000"
     tools:context="com.example.oryossipof.alphahotal.MainActivity">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+    android:layout_centerHorizontal="true"
+        />
+
+
         <it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow
             android:id="@+id/coverFlow"
             android:layout_width="match_parent"
@@ -17,7 +25,7 @@
             app:reflectionGap="0px"
             app:scalingThreshold="0.5"
             app:rotationThreshold="0.5"
-            app:spacing="0.4"
+            app:spacing="0.5"
             />
 
         <TextSwitcher

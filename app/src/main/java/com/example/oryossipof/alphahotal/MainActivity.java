@@ -17,9 +17,9 @@ import java.util.ArrayList;
 import it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow;
 
 public class MainActivity extends Activity {
-    private String[] descriptions = {"Room Service","Activity Hours", "Food"};
-    private int[] drawables = {R.drawable.roomservice,  R.drawable.opening,R.drawable.food};
-    private Class[] activities  ={SigninActivity.class, SigninActivity.class, SigninActivity.class};
+    private String[] descriptions = {"Reception","Housekeeping", "Security", "Information", "Room Service" , "Maintenance","Feedback"};
+    private int[] drawables = {R.drawable.reception, R.drawable.housekeeping,  R.drawable.security ,R.drawable.information, R.drawable.roomservice, R.drawable.main, R.drawable.feedback2};
+    private Class[] activities  ={ReceptionActivity.class, HotelHousekeepingActivity.class, SecurityActivity.class,InformationActivity.class, RoomServiceActivity.class, MaintenanceActivity.class, FeedbackMenuActivity.class};
     private ArrayList<SelectOption> numbers = new ArrayList<>();
 
     private FeatureCoverFlow coverFlow;
@@ -62,7 +62,14 @@ public class MainActivity extends Activity {
         coverFlow.setOnScrollPositionListener(new FeatureCoverFlow.OnScrollPositionListener() {
             @Override
             public void onScrolledToPosition(int position) {
-                textSwitcher.setText(numbers.get(position).getDescription().toString());
+                final int pos = position;
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        textSwitcher.setText(numbers.get(pos).getDescription().toString());
+                    }
+                });
+
             }
 
             @Override
