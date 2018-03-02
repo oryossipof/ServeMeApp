@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity" >
+
+        </activity>
         <activity android:name=".SigninActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +28,8 @@
         <activity android:name=".MaintenanceActivity" />
         <activity android:name=".ReceptionActivity" />
         <activity android:name=".SecurityActivity" />
-        <activity android:name=".RoomServiceActivity"></activity>
+        <activity android:name=".RoomServiceActivity" />
+        <activity android:name=".questionnairesActivity"></activity>
     </application>
 
 </manifest>

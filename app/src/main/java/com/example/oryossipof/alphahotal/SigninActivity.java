@@ -15,6 +15,7 @@ import android.widget.EditText;
 
 public class SigninActivity extends Activity {
 private Button loginBT;
+private  BackgroundWorker backgroundWorker;
     private EditText roomNum, password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ private Button loginBT;
                 if (!validate())
                     return;
                 String type = "login";
-                BackgroundWorker backgroundWorker = new BackgroundWorker(SigninActivity.this);
+                backgroundWorker = new BackgroundWorker(SigninActivity.this);
                 backgroundWorker.execute(type,roomNum.getText().toString(),password.getText().toString());
                 registerReceiver(new BroadcastReceiver() {
                     @Override
@@ -48,7 +49,7 @@ private Button loginBT;
 
                         if(result.equals("login success"))
                         {
-                            Intent intent1 = new Intent(SigninActivity.this, MainActivity.class);
+                            Intent intent1 = new Intent(SigninActivity.this, questionnairesActivity.class);
                             startActivity(intent1);
                             try {
                                 this.finalize();
@@ -62,7 +63,7 @@ private Button loginBT;
                         {
                             AlertDialog alertDialog = new AlertDialog.Builder(context).create();
                             alertDialog.setTitle("Login Result");
-                            alertDialog.setMessage("Wrong! Please Try Again!");
+                            alertDialog.setMessage(result);
                             alertDialog.show();
                         }
                     }

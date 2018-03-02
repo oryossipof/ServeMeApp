@@ -18,7 +18,7 @@ import it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow;
 
 public class MainActivity extends Activity {
     private String[] descriptions = {"Reception","Housekeeping", "Security", "Information", "Room Service" , "Maintenance","Feedback"};
-    private int[] drawables = {R.drawable.reception, R.drawable.housekeeping,  R.drawable.security ,R.drawable.information, R.drawable.roomservice, R.drawable.main, R.drawable.feedback2};
+    private int[] drawables = {R.drawable.reception, R.drawable.housekeeping,  R.drawable.securityagent ,R.drawable.information, R.drawable.roomservice, R.drawable.main, R.drawable.feedback2};
     private Class[] activities  ={ReceptionActivity.class, HotelHousekeepingActivity.class, SecurityActivity.class,InformationActivity.class, RoomServiceActivity.class, MaintenanceActivity.class, FeedbackMenuActivity.class};
     private ArrayList<SelectOption> numbers = new ArrayList<>();
 
