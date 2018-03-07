@@ -15,10 +15,12 @@ public class CustomAdapter extends BaseAdapter {
 
     private ArrayList<SelectOption> arrayList;
     private Context mContext;
+    private String roomNum;
 
-    public CustomAdapter(ArrayList<SelectOption> arrayList, Context mContext) {
+    public CustomAdapter(ArrayList<SelectOption> arrayList, Context mContext, String roomNum) {
         this.arrayList = arrayList;
         this.mContext = mContext;
+        this.roomNum = roomNum;
     }
 
     @Override
@@ -50,6 +52,8 @@ final int index = i;
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(mContext, getItem(index).getIntent());
+
+                    intent.putExtra("roomNum", roomNum);
                     mContext.startActivity(intent);
                 }
             });

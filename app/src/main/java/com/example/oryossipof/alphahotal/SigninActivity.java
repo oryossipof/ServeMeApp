@@ -14,9 +14,12 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class SigninActivity extends Activity {
-private Button loginBT;
-private  BackgroundWorker backgroundWorker;
+    private Button loginBT;
+    private  BackgroundWorker backgroundWorker,backgroundWorker2;
     private EditText roomNum, password;
+    BroadcastReceiver receiver;
+    BroadcastReceiver receiver2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,35 +41,66 @@ private  BackgroundWorker backgroundWorker;
                 String type = "login";
                 backgroundWorker = new BackgroundWorker(SigninActivity.this);
                 backgroundWorker.execute(type,roomNum.getText().toString(),password.getText().toString());
-                registerReceiver(new BroadcastReceiver() {
+                registerReceiver(receiver =new BroadcastReceiver() {
                     @Override
                     public void onReceive(Context context, Intent intent) {
                         String result = (String)intent.getExtras().getString("result");
 
-
                         //alertDialog.show();
+                        if(result.equals("login success")) {
+                            //////////////////////////////////////////
+                            // need to check if the user has done questionnaires before/
+                            String type = "IsQuestionnairesDone";
+                            backgroundWorker2 = new BackgroundWorker(SigninActivity.this);
+                            backgroundWorker2.execute(type, roomNum.getText().toString());
+                            registerReceiver(receiver = new BroadcastReceiver() {
+
+                                @Override
+                                public void onReceive(Context context, Intent intent) {
+                                    String result = (String)intent.getExtras().getString("result");
+                                    if (result.equals("used"))
+                                    {
+                                        Intent intent1 = new Intent(SigninActivity.this, MainActivity.class).putExtra("roomNum",roomNum.getText().toString());
+                                        startActivity(intent1);
+                                        try {
+                                            this.finalize();
+                                        } catch (Throwable throwable) {
+                                            throwable.printStackTrace();
+                                        }
+                                        unregisterReceiver(receiver);
+                                        finish();
+                                    }
+                                    else
+                                    {
+                                        Intent intent1 = new Intent(SigninActivity.this, questionnairesActivity.class).putExtra("roomNum",roomNum.getText().toString());
+                                        startActivity(intent1);
+                                        try {
+                                            this.finalize();
+                                        } catch (Throwable throwable) {
+                                            throwable.printStackTrace();
+                                        }
+                                        unregisterReceiver(receiver);
+                                        finish();
+                                    }
 
 
-                        if(result.equals("login success"))
-                        {
-                            Intent intent1 = new Intent(SigninActivity.this, questionnairesActivity.class);
-                            startActivity(intent1);
-                            try {
-                                this.finalize();
-                            } catch (Throwable throwable) {
-                                throwable.printStackTrace();
-                            }
-                            finish();
-                        }
+                                }
+                            }, new IntentFilter("resultIntent2"));;
 
+
+                        }        /////////////////////////////////////////
                         else
                         {
                             AlertDialog alertDialog = new AlertDialog.Builder(context).create();
                             alertDialog.setTitle("Login Result");
                             alertDialog.setMessage(result);
                             alertDialog.show();
+                            unregisterReceiver(receiver);
+
+
                         }
                     }
+
                 }, new IntentFilter("resultIntent"));
             }
         });

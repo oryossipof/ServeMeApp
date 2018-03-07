@@ -1,6 +1,11 @@
 package com.example.oryossipof.alphahotal;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +20,8 @@ public class questionnairesActivity extends AppCompatActivity {
     private RadioButton adult,  male, vegeterian, vegan, married, children, pleasute, group;
     private EditText originText;
     private TextView err;
+    private BroadcastReceiver receiver;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +51,45 @@ public class questionnairesActivity extends AppCompatActivity {
                 else
                 {
                     err.setVisibility(View.INVISIBLE);
+                    String roomNum = getIntent().getStringExtra("roomNum");
                     String type = "questionnaires";
                     BackgroundWorker backgroundWorker = new BackgroundWorker(questionnairesActivity.this);
                     String answers[] = getAnswers();
-                    backgroundWorker.execute(type,answers[0],answers[1],answers[2],answers[3],answers[4],answers[5],answers[6],answers[7],answers[8]);
+                    backgroundWorker.execute(type,answers[0],answers[1],answers[2],answers[3],answers[4],answers[5],answers[6],answers[7],answers[8],roomNum);
+
+                    registerReceiver(receiver = new BroadcastReceiver() {
+                        @Override
+                        public void onReceive(Context context, Intent intent) {
+                            String result = (String)intent.getExtras().getString("result");
+
+
+                            if(result.equals("Record updated successfully"))
+                            {
+                                Intent intent1 = new Intent(questionnairesActivity.this, MainActivity.class);
+                                startActivity(intent1);
+                                try {
+                                    this.finalize();
+                                } catch (Throwable throwable) {
+                                    throwable.printStackTrace();
+                                }
+                                unregisterReceiver(receiver);
+                                finish();
+
+                            }
+
+                            else
+                            {
+                                AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+                                alertDialog.setTitle("Questionnaires Result");
+                                alertDialog.setMessage(result);
+                                alertDialog.show();
+
+
+                                unregisterReceiver(receiver);
+                            }
+                        }
+                    }, new IntentFilter("resultIntent3"));
+
                 }
             }
         });

@@ -15,6 +15,7 @@ public class SelectOption {
         Description = description;
         this.drawable = drawable;
         this.intent = intent;
+
     }
 
     public String getDescription() {

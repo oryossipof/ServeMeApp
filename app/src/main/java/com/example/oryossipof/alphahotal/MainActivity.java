@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
     private FeatureCoverFlow coverFlow;
     private CustomAdapter customAdapter;
     private TextSwitcher textSwitcher;
-
+    private  String roomNum;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +33,9 @@ public class MainActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         initData();
+
+      roomNum = getIntent().getStringExtra("roomNum");
+
 
         textSwitcher = (TextSwitcher) findViewById(R.id.title);
         textSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
@@ -54,7 +57,7 @@ public class MainActivity extends Activity {
 
 
         //Setting adapter for coverflow..
-        customAdapter = new CustomAdapter(numbers , this);
+        customAdapter = new CustomAdapter(numbers , this, roomNum);
         coverFlow = (FeatureCoverFlow) findViewById(R.id.coverFlow);
         coverFlow.setAdapter(customAdapter);
 
