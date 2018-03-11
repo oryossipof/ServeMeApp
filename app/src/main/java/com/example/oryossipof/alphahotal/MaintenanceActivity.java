@@ -1,6 +1,7 @@
 package com.example.oryossipof.alphahotal;
 
         import android.app.Activity;
+        import android.app.ProgressDialog;
         import android.content.BroadcastReceiver;
         import android.content.Context;
         import android.content.Intent;
@@ -25,6 +26,7 @@ public class MaintenanceActivity extends Activity {
     private Context context;
     private int[] darwablename = { R.drawable.safe2,R.drawable.volte,R.drawable.plum,R.drawable.door2,R.drawable.phone,R.drawable.call3};
     String maintenance[] = {"Fix Safe","Power failure","Plumbing fault","Fix door","Fix phone","Call"};
+    private ProgressDialog progress ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class MaintenanceActivity extends Activity {
         mListView.setAdapter(adapter);
         context=this;
         roomNum = getIntent().getStringExtra("roomNum");
+        progress= new ProgressDialog(MaintenanceActivity.this);
 
 
     }
@@ -78,12 +81,22 @@ public class MaintenanceActivity extends Activity {
                     Intent intent;
                     BackgroundWorker bg = new BackgroundWorker(MaintenanceActivity.this);
                     bg.execute("insertNewRequest", roomNum, department, maintenance[index], "");
-
+                    progress.setMessage("Delivring request...");
+                    progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                    progress.setIndeterminate(false);
+                    progress.setCancelable(false);
+                    progress.setCanceledOnTouchOutside(false);
+                    progress.setProgress(0);
+                    progress.show();
 
                     registerReceiver(receiver = new BroadcastReceiver() {
                         @Override
                         public void onReceive(Context context, Intent intent) {
                             String result = (String) intent.getExtras().getString("result");
+
+
+                            progress.setProgress(100);
+                            progress.dismiss();
 
                             //alertDialog.show();
                             if (result.equals("New requests accepted successfully")) {
@@ -95,6 +108,7 @@ public class MaintenanceActivity extends Activity {
                                 Toast.makeText(MaintenanceActivity.this, "connection error! try again later", Toast.LENGTH_SHORT).show();
                                 unregisterReceiver(receiver);
                             }
+
                         }
 
                     }, new IntentFilter("resultIntent4"));

@@ -1,6 +1,7 @@
 package com.example.oryossipof.alphahotal;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -23,6 +24,7 @@ public class SecurityActivity extends Activity {
     private BroadcastReceiver receiver;
     private String roomNum;
     private String telNumber ="035433333";
+    private ProgressDialog progress ;
     private int [] drawable = {R.drawable.safe,R.drawable.bellboy,R.drawable.opendor,R.drawable.firstaid,R.drawable.calll};
     String security[] = {"Open Safe","Bellboy","Open Door","First aid","Call"};
 
@@ -42,7 +44,7 @@ public class SecurityActivity extends Activity {
         mListView.setAdapter(adapter);
         context=this;
         roomNum = getIntent().getStringExtra("roomNum");
-
+        progress= new ProgressDialog(SecurityActivity.this);
 
     }
 
@@ -90,13 +92,20 @@ public class SecurityActivity extends Activity {
                         default:
                             BackgroundWorker bg = new BackgroundWorker(SecurityActivity.this);
                             bg.execute("insertNewRequest", roomNum, department, security[index], "");
-
+                            progress.setMessage("Delivring request...");
+                            progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                            progress.setIndeterminate(false);
+                            progress.setCancelable(false);
+                            progress.setCanceledOnTouchOutside(false);
+                            progress.setProgress(0);
+                            progress.show();
 
                             registerReceiver(receiver = new BroadcastReceiver() {
                                 @Override
                                 public void onReceive(Context context, Intent intent) {
                                     String result = (String) intent.getExtras().getString("result");
-
+                                    progress.setProgress(100);
+                                    progress.dismiss();
                                     //alertDialog.show();
                                     if (result.equals("New requests accepted successfully")) {
                                         Toast.makeText(SecurityActivity.this, "New request accepted successfully", Toast.LENGTH_SHORT).show();
@@ -107,6 +116,8 @@ public class SecurityActivity extends Activity {
                                         Toast.makeText(SecurityActivity.this, "connection error! try again later", Toast.LENGTH_SHORT).show();
                                         unregisterReceiver(receiver);
                                     }
+
+
                                 }
 
                             }, new IntentFilter("resultIntent4"));

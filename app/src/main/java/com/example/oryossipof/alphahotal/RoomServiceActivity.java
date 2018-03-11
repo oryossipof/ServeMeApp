@@ -1,5 +1,6 @@
 package com.example.oryossipof.alphahotal;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -24,6 +25,7 @@ public class RoomServiceActivity extends Activity {
     private Context context;
     private int [] drawableName= {R.drawable._2,R.drawable.coffee,R.drawable.cola,R.drawable.fish,R.drawable.salmon,R.drawable._2,R.drawable.pizza,R.drawable.susi,R.drawable.c,R.drawable.water,R.drawable.calll};
     private String foodmenu[] = {"Hamburger","Coffee","Cola","Fish","Salmon","Cake","Pizza","Sushi","Chicken","Water","Call"};
+    private ProgressDialog progress ;
 
 
     @Override
@@ -42,6 +44,7 @@ public class RoomServiceActivity extends Activity {
         mListView.setAdapter(adapter);
         context=this;
         roomNum = getIntent().getStringExtra("roomNum");
+        progress= new ProgressDialog(RoomServiceActivity.this);
 
 
     }
@@ -90,13 +93,21 @@ public class RoomServiceActivity extends Activity {
                         default:
                             BackgroundWorker bg = new BackgroundWorker(RoomServiceActivity.this);
                             bg.execute("insertNewRequest", roomNum, department, foodmenu[index], "");
+                            progress.setMessage("Delivring request...");
+                            progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                            progress.setIndeterminate(false);
+                            progress.setCancelable(false);
+                            progress.setCanceledOnTouchOutside(false);
+                            progress.setProgress(0);
+                            progress.show();
 
 
                             registerReceiver(receiver = new BroadcastReceiver() {
                                 @Override
                                 public void onReceive(Context context, Intent intent) {
                                     String result = (String) intent.getExtras().getString("result");
-
+                                    progress.setProgress(100);
+                                    progress.dismiss();
                                     //alertDialog.show();
                                     if (result.equals("New requests accepted successfully")) {
                                         Toast.makeText(RoomServiceActivity.this, "New request accepted successfully", Toast.LENGTH_SHORT).show();
@@ -107,6 +118,8 @@ public class RoomServiceActivity extends Activity {
                                         Toast.makeText(RoomServiceActivity.this, "connection error! try again later", Toast.LENGTH_SHORT).show();
                                         unregisterReceiver(receiver);
                                     }
+
+
                                 }
 
                             }, new IntentFilter("resultIntent4"));

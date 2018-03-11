@@ -1,6 +1,7 @@
 package com.example.oryossipof.alphahotal;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -21,6 +22,7 @@ public class HotelHousekeepingActivity extends Activity {
     private int drawableNames[] = {R.drawable.toilertries,R.drawable.towel2,R.drawable.papertoilet,R.drawable.babybed,R.drawable.bed,R.drawable.clean};
     private String  description[] = {"Toiletries","Towel","Paper toilet","baby bed","bedding","Clean room"};
     private  String roomNum;
+    private ProgressDialog progress ;
 
     private ListView mListView ;
     private Context context;
@@ -39,7 +41,7 @@ public class HotelHousekeepingActivity extends Activity {
         mListView.setAdapter(adapter);
         context=this;
         roomNum = getIntent().getStringExtra("roomNum");
-
+        progress= new ProgressDialog(HotelHousekeepingActivity.this);
     }
 
     class CutomAdapter2 extends BaseAdapter
@@ -76,13 +78,21 @@ public class HotelHousekeepingActivity extends Activity {
                     Intent intent;
                             BackgroundWorker bg = new BackgroundWorker(HotelHousekeepingActivity.this);
                             bg.execute("insertNewRequest",roomNum,department,description[index],"");
-
+                    progress.setMessage("Delivring request...");
+                    progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                    progress.setIndeterminate(false);
+                    progress.setCancelable(false);
+                    progress.setCanceledOnTouchOutside(false);
+                    progress.setProgress(0);
+                    progress.show();
 
                     registerReceiver(receiver =new BroadcastReceiver() {
                         @Override
                         public void onReceive(Context context, Intent intent) {
                             String result = (String)intent.getExtras().getString("result");
 
+                            progress.setProgress(100);
+                            progress.dismiss();
                             //alertDialog.show();
                             if(result.equals("New requests accepted successfully")) {
                                 Toast.makeText(HotelHousekeepingActivity.this, "New request accepted successfully", Toast.LENGTH_SHORT).show();
@@ -95,6 +105,7 @@ public class HotelHousekeepingActivity extends Activity {
                                 Toast.makeText(HotelHousekeepingActivity.this, "connection error! try again later", Toast.LENGTH_SHORT).show();
                                 unregisterReceiver(receiver);
                             }
+
                         }
 
                     }, new IntentFilter("resultIntent4"));
