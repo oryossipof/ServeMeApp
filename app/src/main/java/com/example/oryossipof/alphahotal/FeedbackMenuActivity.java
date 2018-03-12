@@ -19,7 +19,8 @@ public class FeedbackMenuActivity extends Activity {
     public final String BOOKING_ADDRESS = "https://www.booking.com/hotel/il/grand-beach-tel-aviv.he.html?aid=318615;label=Hebrew_Israel_HE_IL_44751382046-b54ePFlPEwDySRepOPD0WwS219301755770%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap1t1%3Aneg;sid=622130f2c3321d95eb2cbd85b74ebd5c;dest_id=-781545;dest_type=city;dist=0;hapos=1;hpos=1;room1=A%2CA;sb_price_type=total;srepoch=1512832361;srfid=ad0dfa181b8c10841d3ad2954cf323bada140fd2X1;srpvid=df5e6af48488045c;type=total;ucfs=1&#tab-main";
     public final String TRIPADVISOR_ADDRESS = "https://www.tripadvisor.co.il/Hotel_Review-g293984-d308679-Reviews-Grand_Beach_Hotel-Tel_Aviv_Tel_Aviv_District.html";
     private int drawableNames[] = {R.drawable.workers,R.drawable.foodrat,R.drawable.booking,R.drawable.tripadv,R.drawable.feedback2};
-    private String  feedback[] = {"Employees Rating","Food Rating","Booking.com","Tripadvisor.com","Hotel Feedback"};
+    private String  feedback[];
+
     private Class[] connections = {MainActivity.class, MainActivity.class, MainActivity.class,MainActivity.class, FeedbackActivity.class};
 
     private ListView mListView ;
@@ -31,7 +32,7 @@ public class FeedbackMenuActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_feedback_menu);
-
+        feedback =new String[]{getResources().getString(R.string.Employees_Rating_str),getResources().getString(R.string.Food_Rating_str),"Booking.com","Tripadvisor.com",getResources().getString(R.string.Hotel_Feedback_str)};
 
 
         mListView = (ListView) findViewById(R.id.lv_housekeeping);

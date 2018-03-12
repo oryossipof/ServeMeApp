@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow;
 
 public class MainActivity extends Activity {
-    private String[] descriptions = {"Reception","Housekeeping", "Security", "Information", "Room Service" , "Maintenance","Feedback"};
+    private String[] descriptions ;
     private int[] drawables = {R.drawable.reception, R.drawable.housekeeping,  R.drawable.securityagent ,R.drawable.information, R.drawable.roomservice, R.drawable.main, R.drawable.feedback2};
     private Class[] activities  ={ReceptionActivity.class, HotelHousekeepingActivity.class, SecurityActivity.class,InformationActivity.class, RoomServiceActivity.class, MaintenanceActivity.class, FeedbackMenuActivity.class};
     private ArrayList<SelectOption> numbers = new ArrayList<>();
@@ -32,6 +32,7 @@ public class MainActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+        descriptions = new String[]{getResources().getString(R.string.Reception_str), getResources().getString(R.string.Housekeeping_str), getResources().getString(R.string.Security_str), getResources().getString(R.string.Information_str), getResources().getString(R.string.Room_Service_str), getResources().getString(R.string.Maintenance_str), getResources().getString(R.string.Feedback_str)};
         initData();
 
       roomNum = getIntent().getStringExtra("roomNum");

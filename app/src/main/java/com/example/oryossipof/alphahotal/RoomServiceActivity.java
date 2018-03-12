@@ -24,7 +24,9 @@ public class RoomServiceActivity extends Activity {
     private ListView mListView ;
     private Context context;
     private int [] drawableName= {R.drawable._2,R.drawable.coffee,R.drawable.cola,R.drawable.fish,R.drawable.salmon,R.drawable._2,R.drawable.pizza,R.drawable.susi,R.drawable.c,R.drawable.water,R.drawable.calll};
-    private String foodmenu[] = {"Hamburger","Coffee","Cola","Fish","Salmon","Cake","Pizza","Sushi","Chicken","Water","Call"};
+    private String foodmenuDesc[] = {"Hamburger","Coffee","Cola","Fish","Salmon","Cake","Pizza","Sushi","Chicken","Water","Call"};
+    private String foodmenu[];
+
     private ProgressDialog progress ;
 
 
@@ -36,7 +38,7 @@ public class RoomServiceActivity extends Activity {
 
         setContentView(R.layout.activity_room_service);
 
-
+        foodmenu = new String[]{getResources().getString(R.string.Hamburger_str), getResources().getString(R.string.Coffee_str), getResources().getString(R.string.Cola_str),getResources().getString(R.string.Fish_str),getResources().getString(R.string.Salmon_str),getResources().getString(R.string.Cake_str),getResources().getString(R.string.Pizza_str),getResources().getString(R.string.Sushi_str),getResources().getString(R.string.Chicken_str),getResources().getString(R.string.Water_str),getResources().getString(R.string.call_str)};
 
 
         mListView = (ListView) findViewById(R.id.lv_housekeeping);
@@ -92,7 +94,7 @@ public class RoomServiceActivity extends Activity {
 
                         default:
                             BackgroundWorker bg = new BackgroundWorker(RoomServiceActivity.this);
-                            bg.execute("insertNewRequest", roomNum, department, foodmenu[index], "");
+                            bg.execute("insertNewRequest", roomNum, department, foodmenuDesc[index], "");
                             progress.setMessage("Delivring request...");
                             progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                             progress.setIndeterminate(false);

@@ -1,21 +1,21 @@
 package com.example.oryossipof.alphahotal;
 
-        import android.app.Activity;
-        import android.app.ProgressDialog;
-        import android.content.BroadcastReceiver;
-        import android.content.Context;
-        import android.content.Intent;
-        import android.content.IntentFilter;
-        import android.os.Bundle;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-        import android.view.Window;
-        import android.view.WindowManager;
-        import android.widget.BaseAdapter;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-        import android.widget.Toast;
+import android.widget.Toast;
 
 
 public class MaintenanceActivity extends Activity {
@@ -25,7 +25,9 @@ public class MaintenanceActivity extends Activity {
     private ListView mListView ;
     private Context context;
     private int[] darwablename = { R.drawable.safe2,R.drawable.volte,R.drawable.plum,R.drawable.door2,R.drawable.phone,R.drawable.call3};
-    String maintenance[] = {"Fix Safe","Power failure","Plumbing fault","Fix door","Fix phone","Call"};
+    String maintenanceDesc[] = {"Fix Safe","Power Failure","Plumbing Fault","Fix door","Fix phone","Call"};
+    String maintenance[];
+
     private ProgressDialog progress ;
 
     @Override
@@ -35,6 +37,7 @@ public class MaintenanceActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_maintenance);
 
+       maintenance = new String[]{getResources().getString(R.string.fix_safe_str),getResources().getString(R.string.power_failure_str),getResources().getString(R.string.plumbing_fault_str),getResources().getString(R.string.fix_door_str),getResources().getString(R.string.fix_phone_str),getResources().getString(R.string.call_str)};
 
 
         mListView = (ListView) findViewById(R.id.lv_housekeeping);
@@ -80,7 +83,7 @@ public class MaintenanceActivity extends Activity {
                 public void onClick(View view) {
                     Intent intent;
                     BackgroundWorker bg = new BackgroundWorker(MaintenanceActivity.this);
-                    bg.execute("insertNewRequest", roomNum, department, maintenance[index], "");
+                    bg.execute("insertNewRequest", roomNum, department, maintenanceDesc[index], "");
                     progress.setMessage("Delivring request...");
                     progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                     progress.setIndeterminate(false);
@@ -118,5 +121,5 @@ public class MaintenanceActivity extends Activity {
 
             return view;
         }
-        }
+    }
 }

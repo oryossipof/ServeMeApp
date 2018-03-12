@@ -20,7 +20,8 @@ import android.widget.Toast;
 public class HotelHousekeepingActivity extends Activity {
     private String department = "HouseKeeping";
     private int drawableNames[] = {R.drawable.toilertries,R.drawable.towel2,R.drawable.papertoilet,R.drawable.babybed,R.drawable.bed,R.drawable.clean};
-    private String  description[] = {"Toiletries","Towel","Paper toilet","baby bed","bedding","Clean room"};
+    private String  descriptionDes[] = {"Toiletries","Towel","Paper toilet","baby bed","bedding","Clean room"};
+    private String  description[];
     private  String roomNum;
     private ProgressDialog progress ;
 
@@ -35,6 +36,7 @@ public class HotelHousekeepingActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_hotel_housekeeping);
 
+        description = new String[] {getResources().getString(R.string.Toiletries_str),getResources().getString(R.string.Towel_str),getResources().getString(R.string.Paper_str),getResources().getString(R.string.baby_bed_str),getResources().getString(R.string.bedding_str),getResources().getString(R.string.Clean_room_str)};
 
         mListView = (ListView) findViewById(R.id.lv_housekeeping);
         final CutomAdapter2 adapter = new CutomAdapter2();
@@ -76,8 +78,8 @@ public class HotelHousekeepingActivity extends Activity {
                 @Override
                 public void onClick(View view) {
                     Intent intent;
-                            BackgroundWorker bg = new BackgroundWorker(HotelHousekeepingActivity.this);
-                            bg.execute("insertNewRequest",roomNum,department,description[index],"");
+                    BackgroundWorker bg = new BackgroundWorker(HotelHousekeepingActivity.this);
+                    bg.execute("insertNewRequest",roomNum,department,descriptionDes[index],"");
                     progress.setMessage("Delivring request...");
                     progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                     progress.setIndeterminate(false);

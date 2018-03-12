@@ -26,7 +26,8 @@ public class SecurityActivity extends Activity {
     private String telNumber ="035433333";
     private ProgressDialog progress ;
     private int [] drawable = {R.drawable.safe,R.drawable.bellboy,R.drawable.opendor,R.drawable.firstaid,R.drawable.calll};
-    String security[] = {"Open Safe","Bellboy","Open Door","First aid","Call"};
+    String security[];
+    String securityDesc[] = {"Open Safe", "BellBoy", "Open Door", "First Aid", "Call"};
 
 
     @Override
@@ -37,6 +38,7 @@ public class SecurityActivity extends Activity {
 
         setContentView(R.layout.activity_security);
 
+        security = new String[] {getResources().getString(R.string.open_safe_str),getResources().getString(R.string.bellboy_str),getResources().getString(R.string.open_door_str),getResources().getString(R.string.first_aid_str),getResources().getString(R.string.call_str)};
 
 
         mListView = (ListView) findViewById(R.id.lv_housekeeping);
@@ -84,14 +86,14 @@ public class SecurityActivity extends Activity {
                     switch(index)
                     {
                         case 4:
-                           // startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("035433333")));
+                            // startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("035433333")));
                             CallService.callPhoneNumber(SecurityActivity.this,telNumber);
 
                             break;
 
                         default:
                             BackgroundWorker bg = new BackgroundWorker(SecurityActivity.this);
-                            bg.execute("insertNewRequest", roomNum, department, security[index], "");
+                            bg.execute("insertNewRequest", roomNum, department, securityDesc[index], "");
                             progress.setMessage("Delivring request...");
                             progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                             progress.setIndeterminate(false);

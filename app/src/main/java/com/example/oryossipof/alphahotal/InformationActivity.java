@@ -24,7 +24,9 @@ public class InformationActivity extends Activity {
     private ListView mListView ;
     private Context context;
     private int [] drawableName= {R.drawable.weather,R.drawable.maps,R.drawable.flight,R.drawable.shabb2,R.drawable.din,R.drawable.pre,R.drawable.pool};
-    private String info[] = {"Weather","Maps","Flight Times","Shabbat Hours ","Dinning Hours","Activities","Pool hours"};
+    private String infoDesc[] = {"Weather","Maps","Flight Times","Shabbat Hours ","Dinning Hours","Activities","Pool hours"};
+    private String info[];
+
 
 
     @Override
@@ -35,6 +37,7 @@ public class InformationActivity extends Activity {
         setContentView(R.layout.activity_information);
 
 
+        info = new String[]{getResources().getString(R.string.Weather_str),getResources().getString(R.string.Maps_str),getResources().getString(R.string.Flight_Times_str),getResources().getString(R.string.Shabbat_Hours_str),getResources().getString(R.string.Dinning_Hours_str),getResources().getString(R.string.Activities_str),getResources().getString(R.string.Pool_hours_str)};
         mListView = (ListView) findViewById(R.id.lv_housekeeping);
         final CutomAdapter2 adapter = new CutomAdapter2();
         mListView.setAdapter(adapter);
@@ -97,12 +100,14 @@ public class InformationActivity extends Activity {
                             startActivity(intent);
                             break;
 
-                        case 4:
-
+                        case 4:  //Activities
+                            intent = new Intent(InformationActivity.this, ActivitiesActivity.class);
+                            startActivity(intent);
                             break;
 
                         case 5:
-
+                            intent = new Intent(InformationActivity.this, ActivitiesActivity.class);
+                            startActivity(intent);
                             break;
 
                         case 6:

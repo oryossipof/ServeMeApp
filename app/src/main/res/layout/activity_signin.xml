@@ -13,7 +13,7 @@ android:scrollbarAlwaysDrawVerticalTrack="true">
     android:layout_marginBottom="16dp"
     android:layout_marginTop="22dp"
     android:gravity="center_horizontal"
-    android:text="Account Login"
+    android:text="@string/signup_title_str"
     android:textColor="#fff"
     android:textSize="26sp"
     android:textStyle="bold" />
@@ -48,7 +48,7 @@ android:scrollbarAlwaysDrawVerticalTrack="true">
                 android:drawableLeft="@drawable/keyicon"
                 android:drawableTint="#000"
                 android:singleLine="true"
-                android:hint="Room Number"
+                android:hint="@string/username_str"
                 android:gravity="left"
                 android:inputType="numberDecimal" />
         </android.support.design.widget.TextInputLayout>
@@ -66,7 +66,7 @@ android:scrollbarAlwaysDrawVerticalTrack="true">
                 android:gravity="left"
                 android:drawableLeft="@drawable/passicon"
                 android:drawableTint="#000"
-                android:hint="Password"
+                android:hint="@string/password_str"
                 android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
 
@@ -77,7 +77,7 @@ android:scrollbarAlwaysDrawVerticalTrack="true">
             android:layout_height="wrap_content"
             android:layout_margin="22dp"
             android:background="#d67601"
-            android:text="Sign In"
+            android:text="@string/signup_bt_str"
             android:textAllCaps="false"
             android:textColor="#fff"
             android:textSize="18sp" />
