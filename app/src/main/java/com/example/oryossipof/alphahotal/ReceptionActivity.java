@@ -17,6 +17,7 @@ import android.widget.TextView;
 public class ReceptionActivity extends Activity {
     private String telNumber ="035433333";
     private ProgressDialog progress ;
+    private String roomNum;
     private int [] drawableName = {R.drawable.call3,R.drawable.trip,R.drawable.tour,R.drawable.food,R.drawable.taxi,R.drawable.weakup};
     String receptionDesc[] = {"Call","Book a Trip","Recommend tours","Recommend restaurants","Get Taxi","Wake up call"};
     String reception[];
@@ -35,7 +36,7 @@ public class ReceptionActivity extends Activity {
         final CutomAdapter2 adapter = new CutomAdapter2();
         mListView.setAdapter(adapter);
         context=this;
-
+        roomNum = getIntent().getStringExtra("roomNum");
         progress= new ProgressDialog(ReceptionActivity.this);
     }
 
@@ -79,6 +80,13 @@ public class ReceptionActivity extends Activity {
                             CallService.callPhoneNumber(ReceptionActivity.this,telNumber);
 
                             break;
+
+                        case 4:  //Get Taxi
+                            intent = new Intent(ReceptionActivity.this, BookTaxiActivity.class);
+                            intent.putExtra("roomNum",roomNum);
+                            startActivity(intent);
+                            break;
+
 
                         default:
 

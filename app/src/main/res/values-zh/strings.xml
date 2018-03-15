@@ -57,4 +57,25 @@
     <string name="Dinning_Hours_str">用餐时间</string>
     <string name="Activities_str">活动</string>
     <string name="Pool_hours_str">游泳池时间</string>
+    <string name="New_request_accepted_successfully_str">"收到请求 "</string>
+    <string name="Connection_error_try_again_later_str">连接错误！ 稍后再试</string>
+    <string name="Delivring_request_str">交付请求....</string>
+    <string name="Book_a_Texi_str">预定出租车</string>
+    <string name="Destination_str">目的地</string>
+    <string name="Number_of_passengers_str">乘客人数</string>
+    <string name="Date_str">日期</string>
+    <string name="Order_str">订购</string>
+    <string name="login_failed_str">"登录失败 "</string>
+    <string name="login_result_str">"登录结果 "</string>
+    <string name="select_time_str">"选择时间 "</string>
+    <string name="empty_date_str">"日期是空的 "</string>
+    <string name="telAviv_str">特拉维夫</string>
+    <string name="jerusalem_str">"耶路撒冷 "</string>
+    <string name="haifa_str">"海法 "</string>
+    <string name="benGurion_str">本古里安航空港</string>
+    <string name="eilat_str">"埃拉特 "</string>
+    <string name="batyam_str">"蝙蝠薯 "</string>
+    <string name="otherDest_str">其他</string>
+    <string name="tooManyRequests_str">"来自同一服务的打开请求太多 "</string>
+    <string name="not_occupied_str">"这个房间没有被占用 "</string>
 </resources>

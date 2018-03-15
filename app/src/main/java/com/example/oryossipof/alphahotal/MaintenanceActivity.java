@@ -84,7 +84,7 @@ public class MaintenanceActivity extends Activity {
                     Intent intent;
                     BackgroundWorker bg = new BackgroundWorker(MaintenanceActivity.this);
                     bg.execute("insertNewRequest", roomNum, department, maintenanceDesc[index], "");
-                    progress.setMessage("Delivring request...");
+                    progress.setMessage(getResources().getString(R.string.Delivring_request_str));
                     progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                     progress.setIndeterminate(false);
                     progress.setCancelable(false);
@@ -102,13 +102,26 @@ public class MaintenanceActivity extends Activity {
                             progress.dismiss();
 
                             //alertDialog.show();
-                            if (result.equals("New requests accepted successfully")) {
-                                Toast.makeText(MaintenanceActivity.this, "New request accepted successfully", Toast.LENGTH_SHORT).show();
+                            if(result.equals("New requests accepted successfully")) {
+                                Toast.makeText(MaintenanceActivity.this, getResources().getString(R.string.New_request_accepted_successfully_str), Toast.LENGTH_SHORT).show();
 
                                 unregisterReceiver(receiver);
 
-                            } else {
-                                Toast.makeText(MaintenanceActivity.this, "connection error! try again later", Toast.LENGTH_SHORT).show();
+                            }
+                            else if (result.equals("no one in the room"))
+                            {
+                                Toast.makeText(MaintenanceActivity.this, getResources().getString(R.string.not_occupied_str), Toast.LENGTH_SHORT).show();
+                                unregisterReceiver(receiver);
+                            }
+                            else if (result.equals("same request"))
+                            {
+                                Toast.makeText(MaintenanceActivity.this,getResources().getString(R.string.tooManyRequests_str), Toast.LENGTH_SHORT).show();
+                                unregisterReceiver(receiver);
+
+                            }
+                            else
+                            {
+                                Toast.makeText(MaintenanceActivity.this, getResources().getString(R.string.Connection_error_try_again_later_str), Toast.LENGTH_SHORT).show();
                                 unregisterReceiver(receiver);
                             }
 

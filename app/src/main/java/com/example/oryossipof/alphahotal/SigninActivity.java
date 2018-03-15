@@ -50,7 +50,7 @@ public class SigninActivity extends Activity {
                         if(result.equals("login success")) {
                             //////////////////////////////////////////
                             // need to check if the user has done questionnaires before/
-                            String type = "IsQuestionnairesDone";
+                            String type = "didQuestionnairesBefore";
                             backgroundWorker2 = new BackgroundWorker(SigninActivity.this);
                             backgroundWorker2.execute(type, roomNum.getText().toString());
                             registerReceiver(receiver = new BroadcastReceiver() {
@@ -92,8 +92,8 @@ public class SigninActivity extends Activity {
                         else
                         {
                             AlertDialog alertDialog = new AlertDialog.Builder(context).create();
-                            alertDialog.setTitle("Login Result");
-                            alertDialog.setMessage(result);
+                            alertDialog.setTitle(getResources().getString(R.string.login_result_str));
+                            alertDialog.setMessage(getResources().getString(R.string.login_failed_str));
                             alertDialog.show();
                             unregisterReceiver(receiver);
 

@@ -57,4 +57,25 @@
     <string name="Dinning_Hours_str">זמני ארוחות</string>
     <string name="Activities_str">פעילויות</string>
     <string name="Pool_hours_str">שעות פתיחה בריכה</string>
+    <string name="New_request_accepted_successfully_str">בקשתך התקבלה בהצלחה</string>
+    <string name="Connection_error_try_again_later_str">בעיית חיבור! נסה שוב מאוחר יותר</string>
+    <string name="Delivring_request_str">....בקשתך נשלחה</string>
+    <string name="Book_a_Texi_str">הזמן מונית</string>
+    <string name="Destination_str">יעד</string>
+    <string name="Number_of_passengers_str">מספר נוסעים</string>
+    <string name="Date_str">תאריך</string>
+    <string name="Order_str">הזמן</string>
+    <string name="login_result_str">תוצאת התחברות</string>
+    <string name="login_failed_str">התחברות נכשלה</string>
+    <string name="select_time_str">בחר זמן</string>
+    <string name="empty_date_str">התאריך ריק</string>
+    <string name="telAviv_str">תל אביב</string>
+    <string name="jerusalem_str">ירושלים</string>
+    <string name="haifa_str">חיפה</string>
+    <string name="benGurion_str">שדה תעופה בן גוריון</string>
+    <string name="eilat_str">אילת</string>
+    <string name="batyam_str">בת ים</string>
+    <string name="otherDest_str">אחר</string>
+    <string name="tooManyRequests_str">יותר מדי בקשות פתוחות מאותו השירות</string>
+    <string name="not_occupied_str">החדר אינו מאוכלס</string>
 </resources>

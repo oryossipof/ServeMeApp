@@ -57,4 +57,25 @@
     <string name="Dinning_Hours_str">Horas de comida</string>
     <string name="Activities_str">Ocupaciones</string>
     <string name="Pool_hours_str">Horas de piscina</string>
+    <string name="New_request_accepted_successfully_str">Solicitud recibida</string>
+    <string name="Connection_error_try_again_later_str">¡error de conexión! intente nuevamente más tarde</string>
+    <string name="Delivring_request_str">Entrega de solicitud ....</string>
+    <string name="Book_a_Texi_str">Reserve un taxi</string>
+    <string name="Destination_str">Destino</string>
+    <string name="Number_of_passengers_str">Nombre de passagers</string>
+    <string name="Date_str">Fecha</string>
+    <string name="Order_str">Orden</string>
+    <string name="login_result_str">"Resultado de ingreso "</string>
+    <string name="login_failed_str">error de inicio de sesion</string>
+    <string name="select_time_str">"seleccionar hora "</string>
+    <string name="empty_date_str">"La fecha está vacía "</string>
+    <string name="telAviv_str">"Tel Aviv "</string>
+    <string name="jerusalem_str">Jerusalén</string>
+    <string name="haifa_str">haifa</string>
+    <string name="benGurion_str">"Puerto aéreo de Ben Gurion "</string>
+    <string name="eilat_str">Eilat</string>
+    <string name="batyam_str">Bat Yam</string>
+    <string name="otherDest_str">otro</string>
+    <string name="tooManyRequests_str">"Demasiadas solicitudes abiertas del mismo servicio "</string>
+    <string name="not_occupied_str">"Esta habitación no está ocupada "</string>
 </resources>

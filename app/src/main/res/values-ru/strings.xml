@@ -57,4 +57,25 @@
     <string name="Dinning_Hours_str">Часы работы</string>
     <string name="Activities_str">"мероприятия "</string>
     <string name="Pool_hours_str">Часы в бассейне</string>
+    <string name="New_request_accepted_successfully_str">Полученный запрос</string>
+    <string name="Connection_error_try_again_later_str">Ошибка подключения! Попробуйте позже</string>
+    <string name="Delivring_request_str">Поставка запроса ....</string>
+    <string name="Book_a_Texi_str">Забронировать такси</string>
+    <string name="Destination_str">Место назначения</string>
+    <string name="Number_of_passengers_str">Количество пассажиров</string>
+    <string name="Date_str">Дата</string>
+    <string name="Order_str">порядок</string>
+    <string name="login_result_str">"Результат входа "</string>
+    <string name="login_failed_str">Авторизация не удалась</string>
+    <string name="select_time_str">выбрать время</string>
+    <string name="empty_date_str">"Дата пуста "</string>
+    <string name="telAviv_str">"Тель-Авив "</string>
+    <string name="jerusalem_str">Иерусалим</string>
+    <string name="haifa_str">Haifa</string>
+    <string name="benGurion_str">Воздушный порт Бен-Гурион</string>
+    <string name="eilat_str">Эйлат</string>
+    <string name="batyam_str">Бат Ям</string>
+    <string name="otherDest_str">Другие</string>
+    <string name="tooManyRequests_str">"Слишком много открытых запросов от одной и той же службы "</string>
+    <string name="not_occupied_str">"Этот номер не занят "</string>
 </resources>

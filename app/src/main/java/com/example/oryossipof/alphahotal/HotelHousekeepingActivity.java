@@ -18,13 +18,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class HotelHousekeepingActivity extends Activity {
-    private String department = "HouseKeeping";
+
     private int drawableNames[] = {R.drawable.toilertries,R.drawable.towel2,R.drawable.papertoilet,R.drawable.babybed,R.drawable.bed,R.drawable.clean};
     private String  descriptionDes[] = {"Toiletries","Towel","Paper toilet","baby bed","bedding","Clean room"};
     private String  description[];
     private  String roomNum;
     private ProgressDialog progress ;
-
+    private String department = "HouseKeeping";
     private ListView mListView ;
     private Context context;
     private  BroadcastReceiver receiver;
@@ -80,7 +80,7 @@ public class HotelHousekeepingActivity extends Activity {
                     Intent intent;
                     BackgroundWorker bg = new BackgroundWorker(HotelHousekeepingActivity.this);
                     bg.execute("insertNewRequest",roomNum,department,descriptionDes[index],"");
-                    progress.setMessage("Delivring request...");
+                    progress.setMessage(getResources().getString(R.string.Delivring_request_str));
                     progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                     progress.setIndeterminate(false);
                     progress.setCancelable(false);
@@ -97,14 +97,25 @@ public class HotelHousekeepingActivity extends Activity {
                             progress.dismiss();
                             //alertDialog.show();
                             if(result.equals("New requests accepted successfully")) {
-                                Toast.makeText(HotelHousekeepingActivity.this, "New request accepted successfully", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(HotelHousekeepingActivity.this, getResources().getString(R.string.New_request_accepted_successfully_str), Toast.LENGTH_SHORT).show();
 
+                                unregisterReceiver(receiver);
+
+                            }
+                            else if (result.equals("no one in the room"))
+                            {
+                                Toast.makeText(HotelHousekeepingActivity.this, getResources().getString(R.string.not_occupied_str), Toast.LENGTH_SHORT).show();
+                                unregisterReceiver(receiver);
+                            }
+                            else if (result.equals("same request"))
+                            {
+                                Toast.makeText(HotelHousekeepingActivity.this,getResources().getString(R.string.tooManyRequests_str), Toast.LENGTH_SHORT).show();
                                 unregisterReceiver(receiver);
 
                             }
                             else
                             {
-                                Toast.makeText(HotelHousekeepingActivity.this, "connection error! try again later", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(HotelHousekeepingActivity.this, getResources().getString(R.string.Connection_error_try_again_later_str), Toast.LENGTH_SHORT).show();
                                 unregisterReceiver(receiver);
                             }
 
