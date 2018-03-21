@@ -23,6 +23,8 @@ public class ReceptionActivity extends Activity {
     String reception[];
     private ListView mListView ;
     private Context context;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,13 +78,25 @@ public class ReceptionActivity extends Activity {
                     switch(index)
                     {
                         case 0:
-                            // startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("035433333")));
-                            CallService.callPhoneNumber(ReceptionActivity.this,telNumber);
 
+                            CallService.callPhoneNumber(ReceptionActivity.this,InformationUtils.CallReception);
+
+                            break;
+
+                        case 1:  //book a Trip
+                            intent = new Intent(ReceptionActivity.this, BookTripActivity.class);
+                            intent.putExtra("roomNum",roomNum);
+                            startActivity(intent);
                             break;
 
                         case 4:  //Get Taxi
                             intent = new Intent(ReceptionActivity.this, BookTaxiActivity.class);
+                            intent.putExtra("roomNum",roomNum);
+                            startActivity(intent);
+                            break;
+
+                        case 5:  //wake up call
+                            intent = new Intent(ReceptionActivity.this, WakeUpCall.class);
                             intent.putExtra("roomNum",roomNum);
                             startActivity(intent);
                             break;

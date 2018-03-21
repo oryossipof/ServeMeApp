@@ -68,7 +68,7 @@
     <string name="login_result_str">"Результат входа "</string>
     <string name="login_failed_str">Авторизация не удалась</string>
     <string name="select_time_str">выбрать время</string>
-    <string name="empty_date_str">"Дата пуста "</string>
+    <string name="empty_date_str">Заполните поля даты и времени.</string>
     <string name="telAviv_str">"Тель-Авив "</string>
     <string name="jerusalem_str">Иерусалим</string>
     <string name="haifa_str">Haifa</string>
@@ -78,4 +78,15 @@
     <string name="otherDest_str">Другие</string>
     <string name="tooManyRequests_str">"Слишком много открытых запросов от одной и той же службы "</string>
     <string name="not_occupied_str">"Этот номер не занят "</string>
+    <string name="Book_a_Trip_str">Забронировать поездку</string>
+
+    <string-array name="desArray">
+        <item>Мертвое море</item>
+        <item>Иерусалим и старый город</item>
+        <item>Tel-aviv and Jaffa</item>
+        <item>Тель-Авив и Яффо</item>
+        <item>Кейсария</item>
+        <item>Хайфа и Акко</item>
+        <item>Мицпе Рамон и юг</item>
+    </string-array>
 </resources>

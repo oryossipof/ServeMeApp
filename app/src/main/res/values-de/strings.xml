@@ -37,7 +37,7 @@
     <string name="Cola_str">Coca Cola</string>
     <string name="Fish_str">Fisch</string>
     <string name="Salmon_str">Lachs</string>
-    <string name="Cake_str">Kuchen</string>
+    <string name="Cake_str">buchen</string>
     <string name="Pizza_str">Pizza</string>
     <string name="Sushi_str">Sushi</string>
     <string name="Chicken_str">Hähnchen</string>
@@ -68,7 +68,7 @@
     <string name="login_result_str">"Login Ergebnis "</string>
     <string name="login_failed_str">Anmeldung fehlgeschlagen</string>
     <string name="select_time_str">"Zeit auswählen "</string>
-    <string name="empty_date_str">"Das Datum ist leer "</string>
+    <string name="empty_date_str">Bitte füllen Sie die Felder für Datum und Uhrzeit aus</string>
     <string name="telAviv_str">"Tel Aviv "</string>
     <string name="jerusalem_str">"Jerusalem "</string>
     <string name="haifa_str">Haifa</string>
@@ -78,4 +78,17 @@
     <string name="otherDest_str">andere</string>
     <string name="tooManyRequests_str">"Zu viele offene Anfragen von demselben Dienst "</string>
     <string name="not_occupied_str">"Dieses Zimmer ist nicht besetzt "</string>
+    <string name="Book_a_Trip_str">Eine Reise buchen</string>
+
+    <string-array name="desArray">
+        <item>Totes Meer</item>
+        <item>JJerusalem und die Altstadt</item>
+        <item>Tel Aviv und Jaffa</item>
+        <item>Tiberias und See Genezareth</item>
+        <item>Caesarea</item>
+        <item>Haifa und Akko</item>
+        <item>Mitzpe Ramon und der Süden</item>
+    </string-array>
+
+
 </resources>

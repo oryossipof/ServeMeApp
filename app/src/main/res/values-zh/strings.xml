@@ -68,7 +68,7 @@
     <string name="login_failed_str">"登录失败 "</string>
     <string name="login_result_str">"登录结果 "</string>
     <string name="select_time_str">"选择时间 "</string>
-    <string name="empty_date_str">"日期是空的 "</string>
+    <string name="empty_date_str">请填写日期和时间字段</string>
     <string name="telAviv_str">特拉维夫</string>
     <string name="jerusalem_str">"耶路撒冷 "</string>
     <string name="haifa_str">"海法 "</string>
@@ -78,4 +78,16 @@
     <string name="otherDest_str">其他</string>
     <string name="tooManyRequests_str">"来自同一服务的打开请求太多 "</string>
     <string name="not_occupied_str">"这个房间没有被占用 "</string>
+    <string name="Book_a_Trip_str">预订旅程</string>
+
+    <string-array name="desArray">
+        <item>死海</item>
+        <item>耶路撒冷和旧城</item>
+        <item>特拉维夫和雅法</item>
+        <item>提比哩亚和加利利海</item>
+        <item>凯撒利亚</item>
+        <item>海法和阿卡</item>
+        <item>和南部</item>
+    </string-array>
+
 </resources>

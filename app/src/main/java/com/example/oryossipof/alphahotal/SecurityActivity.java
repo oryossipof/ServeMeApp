@@ -23,11 +23,14 @@ public class SecurityActivity extends Activity {
     private Context context;
     private BroadcastReceiver receiver;
     private String roomNum;
-    private String telNumber ="035433333";
     private ProgressDialog progress ;
     private int [] drawable = {R.drawable.safe,R.drawable.bellboy,R.drawable.opendor,R.drawable.firstaid,R.drawable.calll};
     String security[];
     String securityDesc[] = {"Open Safe", "BellBoy", "Open Door", "First Aid", "Call"};
+
+
+
+
 
 
     @Override
@@ -86,8 +89,11 @@ public class SecurityActivity extends Activity {
                     switch(index)
                     {
                         case 4:
-                            // startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("035433333")));
-                            CallService.callPhoneNumber(SecurityActivity.this,telNumber);
+                            CallService.callPhoneNumber(SecurityActivity.this,InformationUtils.CallSecrity);
+
+
+
+
 
                             break;
 

@@ -68,7 +68,7 @@
     <string name="login_result_str">תוצאת התחברות</string>
     <string name="login_failed_str">התחברות נכשלה</string>
     <string name="select_time_str">בחר זמן</string>
-    <string name="empty_date_str">התאריך ריק</string>
+    <string name="empty_date_str">אנא מלא בבקשה את התאריך והשעה!</string>
     <string name="telAviv_str">תל אביב</string>
     <string name="jerusalem_str">ירושלים</string>
     <string name="haifa_str">חיפה</string>
@@ -78,4 +78,16 @@
     <string name="otherDest_str">אחר</string>
     <string name="tooManyRequests_str">יותר מדי בקשות פתוחות מאותו השירות</string>
     <string name="not_occupied_str">החדר אינו מאוכלס</string>
+    <string name="Book_a_Trip_str">הזמן טיול</string>
+
+    <string-array name="desArray">
+        <item>ים המלח</item>
+        <item>ירושלים והעיר העתיקה</item>
+        <item>תל אביב יפו</item>
+        <item>טבריה והכנרת</item>
+        <item>קיסריה</item>
+        <item>חיפה ועכו</item>
+        <item>מצפה רמון והנגב</item>
+    </string-array>
+    <string name="wakeUp_call_str">צלצול השכמה</string>
 </resources>

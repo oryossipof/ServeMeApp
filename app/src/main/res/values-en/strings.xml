@@ -68,7 +68,7 @@
     <string name="login_result_str">Login Result</string>
     <string name="login_failed_str">Login Failed</string>
     <string name="select_time_str">Select Time</string>
-    <string name="empty_date_str">The date is empty</string>
+    <string name="empty_date_str">Please complete the date and time fields</string>
     <string name="telAviv_str">Tel Aviv</string>
     <string name="jerusalem_str">Jerusalem</string>
     <string name="haifa_str">Haifa</string>
@@ -78,4 +78,16 @@
     <string name="otherDest_str">Other</string>
     <string name="tooManyRequests_str">"Too many open requests from the same service "</string>
     <string name="not_occupied_str">"This room is not occupied "</string>
+    <string name="Book_a_Trip_str">Book a trip</string>
+
+    <string-array name="desArray">
+        <item>Dead sea</item>
+        <item>Jerusalem and old city</item>
+        <item>Tel-aviv and Jaffa</item>
+        <item>Tiberias and Sea of Galilee</item>
+        <item>Caesarea</item>
+        <item>Haifa and Acre</item>
+        <item>Mitzpe Ramon and the south</item>
+    </string-array>
+    <string name="wakeUp_call_str">Wake up call</string>
 </resources>
